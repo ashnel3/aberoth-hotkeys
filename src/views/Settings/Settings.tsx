@@ -1,11 +1,15 @@
 import React, { ReactElement, useEffect } from 'react'
+import { createUseStyles } from 'react-jss'
 import { Close, SideNav } from '../../components'
-
-// Assets
-import './settings.scss'
 
 /** Settings main component */
 export const Settings = (): ReactElement => {
+  const useStyles = createUseStyles((theme) => ({
+    '.settings': {
+      minWidth: '120px',
+    }
+  }))
+
   useEffect(() => {
     window.ahk.Gui('+Resize -AlwaysOnTop -Owner')
     window.Properties = {
@@ -17,10 +21,12 @@ export const Settings = (): ReactElement => {
     }
   }, [])
 
+  const styles = useStyles()
+
   return (
-    <div className="settings">
+    <div className={styles['.settings']}>
       <Close />
-      <SideNav>
+      <SideNav width={400}>
         {/** TODO: Bindings drawer sub-menu */}
         <li className="link">Bindings</li>
         <li className="link">Options</li>

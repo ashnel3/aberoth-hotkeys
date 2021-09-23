@@ -1,9 +1,21 @@
 import React, { ReactElement, useEffect } from 'react'
+import { createUseStyles } from 'react-jss'
 import { Close, SideNav } from '../../components'
-import './home.scss'
 
 /** Home view component */
 export const Home = (): ReactElement => {
+  const useStyles = createUseStyles((theme) => ({
+    '.root': {
+      position: 'absolute',
+      height: '100%',
+      width: '100%',
+    },
+
+    '.container': {
+      marginLeft: '268px',
+    }
+  }))
+
   useEffect(() => {
     window.ahk.Gui('+Resize -AlwaysOnTop -Owner')
     window.Properties = {
@@ -15,11 +27,13 @@ export const Home = (): ReactElement => {
     }
   }, [])
 
+  const styles = useStyles()
+
   return (
-    <div className="home">
-      <div className="home-container">
+    <div className={styles['.root']}>
+      <div className={styles['.container']}>
         <Close />
-        <SideNav>
+        <SideNav width={260}>
           <li className="link">News</li>
           <li className="link">Glows</li>
           <hr />
