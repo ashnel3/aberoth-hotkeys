@@ -6,6 +6,13 @@ const del = require('del')
 const execa = require('execa')
 
 /**
+ * React asset-manifest
+ * @typedef {Object} AssetManifest
+ * @property {{ [key: string]: string }} files
+ * @property {Array<String>} entrypoints
+ */
+
+/**
  * External library
  * @typedef {Object} Requirement
  * @property {String} name
@@ -149,6 +156,43 @@ gulp.task('copy:lib', () => {
     .pipe(gulp.dest(output))
 })
 
+gulp.task('write:fileinstall', (cb) => {
+  /**
+   * asset manifest json
+   * @type {AssetManifest}
+   */
+  const assetManifest = JSON.parse(readFileSync('./build/asset-manifest.json', 'utf-8'))
+
+  /** Assets template */
+  const template = Object
+    .values(assetManifest.files)
+    .filter((file) => !file.includes('.map') && !file.includes('LICENSE'))
+    .map((file) => `;@Ahk2Exe-AddResource *10 ${file.replace(/\//g, '\\')}`)
+    .join('\r\n')
+
+  writeFile(
+    join(output, 'FileInstall.ahk'),
+    `;@Ahk2Exe-AddResource *10 .\\favicon.ico
+${template}`,
+    'utf-8',
+    cb
+  )
+})
+gulp.task('write:meta', (cb) => {
+  const child = execa.sync('git rev-parse HEAD')
+  writeFile(
+    join(output, 'meta.ini'),
+    `build_commit="${child.stdout}"
+build_version="${'0.1.0'}"
+build_date="${new Date()}"
+homepage="https://github.com/ashnel3/aberoth-hotkeys"
+issues="https://github.com/ashnel3/aberoth-hotkeys/issues"
+donations=""
+    `,
+    cb
+  )
+})
+
 gulp.task('build:ahk', () => {
   return execa(
     ahk2exe,
@@ -170,21 +214,6 @@ gulp.task('build:inno', (cb) => {
     // TODO: Inno-Setup installer
     cb()
   }
-})
-
-gulp.task('write:meta', (cb) => {
-  const child = execa.sync('git rev-parse HEAD')
-  writeFile(
-    join(output, 'meta.ini'),
-    `build_commit="${child.stdout}"
-build_version="${'0.1.0'}"
-build_date="${new Date()}"
-homepage="https://github.com/ashnel3/aberoth-hotkeys"
-issues="https://github.com/ashnel3/aberoth-hotkeys/issues"
-donations=""
-    `,
-    cb
-  )
 })
 
 gulp.task('eslint', () => {
@@ -219,8 +248,8 @@ gulp.task('jest', () => execa(
 
 gulp.task('clean', gulp.parallel('kill', 'clean:build', 'clean:logs', 'clean:bak'))
 
-gulp.task('build', gulp.series('kill', 'build:react', gulp.parallel('copy', 'copy:ahk', 'copy:lib', 'write:meta'), 'build:ahk', 'build:inno'))
-gulp.task('build:dev', gulp.series('kill', 'build:react', gulp.parallel('copy', 'copy:ahk' , 'copy:lib', 'write:meta')))
+gulp.task('build', gulp.series('kill', 'build:react', gulp.parallel('copy', 'copy:ahk', 'copy:lib', 'write:meta', 'write:fileinstall'), 'build:ahk', 'build:inno'))
+gulp.task('build:dev', gulp.series('kill', 'build:react', gulp.parallel('copy', 'copy:ahk' , 'copy:lib', 'write:meta', 'write:fileinstall')))
 
 gulp.task('lint', gulp.series('eslint', 'stylelint'))
 gulp.task('test', gulp.series('yunit', 'jest'))
