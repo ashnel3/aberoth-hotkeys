@@ -1,3 +1,7 @@
+/** Polyfills */
+import 'react-app-polyfill/ie9'
+import 'symbol-es6'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { App, GetRoute, SetRoute} from './components/App'

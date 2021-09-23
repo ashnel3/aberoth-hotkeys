@@ -6,6 +6,7 @@ Powerful open-source hotkeys for Aberoth
   - [Git](https://git-scm.com/)
   - [NodeJS 12+](https://nodejs.org/en/)
   - [Inno-Setup 6 *(optional)*](https://jrsoftware.org/isinfo.php)
+  - Windows 7+
 
 Install w/ chocolatey: `choco install git autohotkey nodejs innosetup`
 
@@ -14,6 +15,10 @@ Install w/ chocolatey: `choco install git autohotkey nodejs innosetup`
   2. Install yarn globally *(optional)* - `npm install -g yarn`
   3. Install dependencies - `yarn install / npm install`
   4. Build & run `yarn start / npm start`
+
+### Road-map:
+  - Load custom scripts
+  - Plugin & theme system
 
 ### Scripts
 ```bash

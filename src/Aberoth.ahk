@@ -3,9 +3,7 @@
 #Include Router.ahk
 #Include Config.ahk
 #Include Hotkeys.ahk
-
-FileInstall index.html, index.html
-; TODO: Dynamic file install?
+#Include FileInstall.ahk
 
 ; Main app class
 class AberothHotkeys
