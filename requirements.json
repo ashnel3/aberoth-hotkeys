@@ -1,0 +1,13 @@
+[
+  "// External requirements",
+  {
+    "name": "Neutron.ahk",
+    "hash": "371fd4d8f2763127ab58fc24948d4563beb9c30c4f74f13681c928153202b980",
+    "url": "https://github.com/G33kDude/Neutron.ahk/archive/d7939bfb8dd1517a05b777b23a75aa099acb55f1.tar.gz"
+  },
+  {
+    "name": "Yunit",
+    "hash": "9647f8360fd96e5c63d23065999d1a9c280abd6f786f208092f20e645ca20fd4",
+    "url": "https://github.com/Uberi/Yunit/archive/2354be7adbe3de5cd9f98c4a767d9e6389769ff5.tar.gz"
+  }
+]

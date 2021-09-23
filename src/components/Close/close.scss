@@ -1,0 +1,26 @@
+@import '../../styles/styles.scss';
+
+.close {
+  width: 18px;
+  height: 18px;
+  margin: 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid $italics;
+  border-radius: 999px;
+  cursor: pointer;
+  background-color: $bg1;
+  text-align: center;
+  transition: background-color 0.15s ease;
+
+  span {
+    color: $italics;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    background-color: $bg2;
+  }
+}

@@ -1,0 +1,15 @@
+* text=auto eol=lf
+
+*.ahk  text eol=crlf
+*.ini  text eol=crlf
+*.iss  text eol=crlf
+*.rtf  text eol=crlf
+
+*.css  text eol=lf
+*.scss text eol=lf
+*.js   text eol=lf
+*.json text eol=lf
+*.mjs  text eol=lf
+*.ts   text eol=lf
+*.d.ts text eol=lf
+*.tsx  text eol=lf

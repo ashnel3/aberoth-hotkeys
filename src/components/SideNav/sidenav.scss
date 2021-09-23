@@ -1,0 +1,65 @@
+@import '../../styles/styles.scss';
+
+.sidenav {
+  width: 268px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $bg3;
+}
+
+.sidenav-container {
+  height: 100%;
+  position: relative;
+}
+
+.nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &:first-child {
+    margin-top: 12px;
+  }
+
+  & hr {
+    display: block;
+    height: 1px;
+    margin: 12px 0;
+    border: none;
+    border-top: 1px solid $bg1;
+  }
+
+  & li {
+    padding: 12px 18px;
+  }
+}
+
+.sidenav footer {
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  padding: 12px 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg5;
+
+  & ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: $title;
+    list-style: none;
+    user-select: none;
+
+    & li {
+      display: inline;
+      margin: 0 4px;
+      padding: 8px 0;
+      float: left;
+    }
+  }
+}
