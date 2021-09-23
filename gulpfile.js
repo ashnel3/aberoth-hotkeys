@@ -227,7 +227,7 @@ gulp.task('eslint', () => {
 gulp.task('stylelint', () => {
   const stylelint = require('gulp-stylelint')
   return gulp
-    .src(['./**/*.{css,scss}'], { cwd: input })
+    .src(['./**/*.{css,tsx}'], { cwd: input })
     .pipe(stylelint({
       reporters: [ { formatter: 'string', console: true } ],
       failAfterError: true
