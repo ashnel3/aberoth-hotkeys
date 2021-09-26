@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom'
 import { App, GetRoute, SetRoute} from './components/App'
 import reportWebVitals from './reportWebVitals'
 import { Hidden, Shown } from './globals'
-import './styles/styles.scss'
+import './styles.css'
 
 ReactDOM.render(
   <React.StrictMode>

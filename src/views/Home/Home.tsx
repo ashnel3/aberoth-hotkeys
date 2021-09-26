@@ -1,9 +1,23 @@
 import React, { ReactElement, useEffect } from 'react'
+import { createUseStyles } from 'react-jss'
 import { Close, SideNav } from '../../components'
-import './home.scss'
+import { AberothHotkeysTheme } from '../../types'
 
 /** Home view component */
 export const Home = (): ReactElement => {
+  const useStyles = createUseStyles((theme: AberothHotkeysTheme) => ({
+    '.root': {
+      position: 'absolute',
+      height: '100%',
+      width: '100%',
+      background: theme.palette.background100,
+    },
+
+    '.container': {
+      marginLeft: '260px',
+    }
+  }))
+
   useEffect(() => {
     window.ahk.Gui('+Resize -AlwaysOnTop -Owner')
     window.Properties = {
@@ -15,11 +29,12 @@ export const Home = (): ReactElement => {
     }
   }, [])
 
+  const styles = useStyles()
   return (
-    <div className="home">
-      <div className="home-container">
+    <div className={styles['.root']}>
+      <div className={styles['.container']}>
         <Close />
-        <SideNav>
+        <SideNav width={260}>
           <li className="link">News</li>
           <li className="link">Glows</li>
           <hr />

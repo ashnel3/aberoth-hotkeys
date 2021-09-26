@@ -41,13 +41,13 @@ const output = join(cwd, './build')
 const lib = join(cwd, './lib')
 
 /** Auto-Hotkey interpreter *(Set with the AUTOHOTKEY environment variable)* */
-const ahk = join(process.env.AUTOHOTKEY, 'AutoHotkey.exe')
+const ahk = join(process.env.AUTOHOTKEY || 'C:\\Program Files\\AutoHotkey', 'AutoHotkey.exe')
 
 /** Auto-Hotkey compiler *(Set with the AHK2EXE environment variable)* */
-const ahk2exe = join(process.env.AUTOHOTKEY, 'Compiler/Ahk2Exe.exe')
+const ahk2exe = join(process.env.AUTOHOTKEY || 'C:\\Program Files\\AutoHotkey', 'Compiler/Ahk2Exe.exe')
 
 /** Inno-Setup compiler *(Set with the ISCC environment variable)* */
-const iscc = process.env.ISCC
+const iscc = process.env.ISCC || 'C:\\Program Files (x86)\\Inno Setup 6\\ISCC.exe'
 
 /** React-scripts cli */
 const reactScripts = require.resolve('react-scripts/bin/react-scripts')
@@ -227,7 +227,7 @@ gulp.task('eslint', () => {
 gulp.task('stylelint', () => {
   const stylelint = require('gulp-stylelint')
   return gulp
-    .src(['./**/*.{css,scss}'], { cwd: input })
+    .src(['./**/*.{css,tsx}'], { cwd: input })
     .pipe(stylelint({
       reporters: [ { formatter: 'string', console: true } ],
       failAfterError: true

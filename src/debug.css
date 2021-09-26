@@ -1,0 +1,7 @@
+/* This is actually one of the easier ways to debug styles in ie lol.
+ * Make sure to check the layout category if you use the attached debugger.
+ */
+
+* {
+  border: 1px solid hotpink;
+}
