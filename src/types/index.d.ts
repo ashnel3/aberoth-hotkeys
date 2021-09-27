@@ -64,9 +64,10 @@ declare global {
 
       /**
        * Show window
+       * @param route Route *(Leave empty to update styles)*
        * @param styles Window styles
        */
-      Show(styles: string): void
+      Show(route: string, styles: string): void
 
       /** Maximize window */
       Maximize(): void

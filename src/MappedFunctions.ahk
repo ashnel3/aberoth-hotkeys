@@ -38,16 +38,15 @@ Gui(Window, styles)
 
 Show(Window, route, styles)
 {
-	if (Window.wnd.GetRoute() != route)
-	{
-		Window.Hide()
-		Window.wnd.SetRoute(route)
-
-		; Wait for redirect
-		while Window.wnd.Properties.Ready != -1
-			Sleep, 30
-	}
+	global App
 	
+	Window.Hide()
+	
+	if (route != "")
+	{
+		App.Router.SetRoute(Window, route)
+	}
+
 	Dimensions := Window.wnd.Properties.Dimensions
 	Window.Show("w" Dimensions.w " h" Dimensions.h styles)
 }
