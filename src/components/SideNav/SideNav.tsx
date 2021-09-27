@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import { createUseStyles } from 'react-jss'
+import { AberothHotkeysTheme } from '../../types'
 
 // TODO: Add sidenav images
 
@@ -13,7 +14,7 @@ export interface SideNavProps {
  * @param props
  */
 export const SideNav = (props: SideNavProps): ReactElement => {
-  const useStyles = createUseStyles((theme) => ({
+  const useStyles = createUseStyles((theme: AberothHotkeysTheme) => ({
     '.nav': {
       margin: 0,
       padding: 0,
@@ -47,6 +48,7 @@ export const SideNav = (props: SideNavProps): ReactElement => {
       height: '100%',
       top: 0,
       left: 0,
+      backgroundColor: theme.palette.background300,
 
       '& footer': {
         display: 'flex',
@@ -56,6 +58,7 @@ export const SideNav = (props: SideNavProps): ReactElement => {
         padding: '12px 0',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: theme.palette.background400,
 
         '& ul': {
           margin: 0,
@@ -68,6 +71,11 @@ export const SideNav = (props: SideNavProps): ReactElement => {
             margin: '0 4px',
             padding: '8px 0',
             float: 'left',
+            color: theme.palette.action,
+
+            '&:hover': {
+              color: theme.palette.action2,
+            },
           }
         },
       }
@@ -75,7 +83,6 @@ export const SideNav = (props: SideNavProps): ReactElement => {
   }))
 
   const styles = useStyles()
-
   return (
     <nav className={styles['.sidenav']}>
       <div className={styles['.container']}>

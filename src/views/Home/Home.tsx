@@ -1,18 +1,20 @@
 import React, { ReactElement, useEffect } from 'react'
 import { createUseStyles } from 'react-jss'
 import { Close, SideNav } from '../../components'
+import { AberothHotkeysTheme } from '../../types'
 
 /** Home view component */
 export const Home = (): ReactElement => {
-  const useStyles = createUseStyles((theme) => ({
+  const useStyles = createUseStyles((theme: AberothHotkeysTheme) => ({
     '.root': {
       position: 'absolute',
       height: '100%',
       width: '100%',
+      background: theme.palette.background100,
     },
 
     '.container': {
-      marginLeft: '268px',
+      marginLeft: '260px',
     }
   }))
 
@@ -28,7 +30,6 @@ export const Home = (): ReactElement => {
   }, [])
 
   const styles = useStyles()
-
   return (
     <div className={styles['.root']}>
       <div className={styles['.container']}>

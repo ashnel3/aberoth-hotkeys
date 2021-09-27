@@ -2,18 +2,20 @@ import React, { ReactElement, useEffect } from 'react'
 import { createUseStyles } from 'react-jss'
 import { AboutFooter, Meta } from './components'
 import { Close } from '../../components'
+import { AberothHotkeysTheme } from '../../types'
 
 // Assets
 import Logo from '../../assets/aberoth-hotkeys.svg'
 
 /** About view component */
 export const About = (): ReactElement => {
-  const useStyles = createUseStyles((theme) => ({
+  const useStyles = createUseStyles((theme: AberothHotkeysTheme) => ({
     '.root': {
       height: '252px',
       padding: '0 30px',
       display: 'flex',
       flexDirection: 'row',
+      backgroundColor: theme.palette.background100,
     },
 
     '.content': {
@@ -22,6 +24,7 @@ export const About = (): ReactElement => {
       float: 'left',
 
       '& h3': {
+        color: theme.palette.title,
         marginLeft: '20px',
       }
     },
@@ -53,7 +56,6 @@ export const About = (): ReactElement => {
 
   return (
     <div className={styles['.root']}>
-      <Close />
       <div className={styles['.logo']}>
         <img src={Logo} alt="aberoth-hotkeys logo" onClick={() => { window.ahk.OpenURL(window.ahk.GetMeta('homepage'), true) }} />
       </div>
@@ -62,6 +64,7 @@ export const About = (): ReactElement => {
         <Meta />
       </div>
       <AboutFooter />
+      <Close />
     </div>
   )
 }

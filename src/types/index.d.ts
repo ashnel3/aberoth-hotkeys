@@ -78,3 +78,4 @@ declare global {
 }
 
 export { Bindings, Options, Meta } from './config'
+export { AberothHotkeysTheme, BasicColors, Colors, FunctionalColors, Palette, Typography } from './theme'

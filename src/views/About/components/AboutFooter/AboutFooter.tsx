@@ -1,9 +1,10 @@
 import React, { ReactElement } from 'react'
 import { createUseStyles } from 'react-jss'
+import { AberothHotkeysTheme } from '../../../../types'
 
 /** About view footer */
 export const AboutFooter = (): ReactElement => {
-  const useStyles = createUseStyles((theme) => ({
+  const useStyles = createUseStyles((theme: AberothHotkeysTheme) => ({
     '.footer': {
       display: 'flex',
       position: 'absolute',
@@ -13,6 +14,7 @@ export const AboutFooter = (): ReactElement => {
       left: '0',
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundColor: theme.palette.background400,
     },
 
     '.nav': {
@@ -24,14 +26,18 @@ export const AboutFooter = (): ReactElement => {
       userSelect: 'none',
 
       '& li': {
+        color: theme.palette.action,
         display: 'inline',
         margin: '0 4px',
+
+        '&:hover': {
+          color: theme.palette.action2,
+        },
       }
     }
   }))
 
   const styles = useStyles()
-
   return (
     <footer className={styles['.footer']}>
       <ul className={styles['.nav']}>

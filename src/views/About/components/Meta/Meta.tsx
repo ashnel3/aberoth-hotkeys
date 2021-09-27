@@ -1,16 +1,18 @@
 import { ReactElement } from "react";
 import { createUseStyles } from "react-jss";
+import { AberothHotkeysTheme } from "../../../../types";
 
 /** Meta-data component */
 export const Meta = (): ReactElement => {
-  const useStyles = createUseStyles((theme) => ({
+  const useStyles = createUseStyles((theme: AberothHotkeysTheme) => ({
     '.meta': {
       margin: '0',
       padding: '0 20px',
       listStyle: 'none',
 
       '& li': {
-        fontSize: '14px',
+        color: theme.palette.body,
+        fontSize: theme.fontsize(14),
       }
     }
   }))
@@ -18,7 +20,6 @@ export const Meta = (): ReactElement => {
   const buildDate = new Date(window.ahk.GetMeta('build_date'))
   const daysSinceBuild = Math.round((new Date().getTime() - buildDate.getTime())/(1000*60*60*24))
   const styles = useStyles()
-
   return (
     <ul className={styles['.meta']}>
       <li id="build-version">Version: {window.ahk.GetMeta('build_version')}</li>
