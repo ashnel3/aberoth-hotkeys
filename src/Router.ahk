@@ -1,14 +1,24 @@
-; TODO: Bind React router
-
+; Router class
 class Router
-{	
+{
+	Window := ""
 	route := ""
 	
+	__New(Window)
+	{
+		This.Window := Window
+	}
+	
+	__Delete()
+	{
+		This.Window.Close()
+	}
+
 	GetRoute(Window)
 	{
 		return Window.wnd.GetRoute()
 	}
-	
+
 	SetRoute(Window, path)
 	{
 		This.route := This.GetRoute(Window)
