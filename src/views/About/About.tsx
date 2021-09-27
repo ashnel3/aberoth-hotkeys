@@ -25,7 +25,7 @@ export const About = (): ReactElement => {
 
       '& h3': {
         color: theme.palette.title,
-        marginLeft: '20px',
+        marginLeft: '30px',
       }
     },
 

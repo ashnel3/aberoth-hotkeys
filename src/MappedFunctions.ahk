@@ -1,15 +1,15 @@
 ; Functions mapped into the window.ahk object
 
-GetOption(Window, section, value)
+GetOption(Window, value)
 {
 	global App
-	return App.Options[section][value]
+	return App.Options[value]
 }
 
-SetOption(Window, section, value, data)
+SetOption(Window, value, data)
 {
 	global App
-	App.Options[section][value] := data
+	App.Options[value] := data
 }
 
 GetMeta(Window, value)
@@ -38,16 +38,15 @@ Gui(Window, styles)
 
 Show(Window, route, styles)
 {
-	if (Window.wnd.GetRoute() != route)
-	{
-		Window.Hide()
-		Window.wnd.SetRoute(route)
+	global App
 
-		; Wait for redirect
-		while Window.wnd.Properties.Ready != -1
-			Sleep, 30
+	Window.Hide()
+
+	if (route != "")
+	{
+		App.Router.SetRoute(Window, route)
 	}
-	
+
 	Dimensions := Window.wnd.Properties.Dimensions
 	Window.Show("w" Dimensions.w " h" Dimensions.h styles)
 }

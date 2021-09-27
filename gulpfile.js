@@ -140,7 +140,7 @@ gulp.task('clean:bak', () => {
   return del('**/*.bak', { cwd: input })
 })
 
-gulp.task('copy', () => {
+gulp.task('copy:config', () => {
   return gulp
     .src(['./config/*'], { cwd: input, cwdbase: true })
     .pipe(gulp.dest(output))
@@ -155,6 +155,12 @@ gulp.task('copy:lib', () => {
     .src('./lib/**/*', { cwd, cwdbase: true })
     .pipe(gulp.dest(output))
 })
+gulp.task('copy:plugins', () => {
+  return gulp
+    .src('./plugins/*', { cwd: input, cwdbase: true })
+    .pipe(gulp.dest(output))
+})
+gulp.task('copy', gulp.parallel('copy:config', 'copy:ahk', 'copy:lib', 'copy:plugins'))
 
 gulp.task('write:fileinstall', (cb) => {
   /**
@@ -192,6 +198,7 @@ donations=""
     cb
   )
 })
+gulp.task('write', gulp.parallel('write:meta', 'write:fileinstall'))
 
 gulp.task('build:ahk', () => {
   return execa(
@@ -248,14 +255,14 @@ gulp.task('jest', () => execa(
 
 gulp.task('clean', gulp.parallel('kill', 'clean:build', 'clean:logs', 'clean:bak'))
 
-gulp.task('build', gulp.series('kill', 'build:react', gulp.parallel('copy', 'copy:ahk', 'copy:lib', 'write:meta', 'write:fileinstall'), 'build:ahk', 'build:inno'))
-gulp.task('build:dev', gulp.series('kill', 'build:react', gulp.parallel('copy', 'copy:ahk' , 'copy:lib', 'write:meta', 'write:fileinstall')))
+gulp.task('build', gulp.series('kill', 'build:react', 'copy', 'write', 'build:ahk', 'build:inno'))
+gulp.task('build:dev', gulp.series('kill', 'build:react', 'copy', 'write'))
 
 gulp.task('lint', gulp.series('eslint', 'stylelint'))
 gulp.task('test', gulp.series('yunit', 'jest'))
 gulp.task('ci', gulp.series('lint', 'test', 'kill'))
 
-gulp.task('start', gulp.series('build', 'run'))
+gulp.task('start', gulp.series('build:dev', 'run'))
 gulp.task('start:dev', () => {
   gulp.watch(
     ['**/*', '!**/*.{bak,iss,test.tsx,test.ahk}'],

@@ -42,7 +42,7 @@ export const Home = (): ReactElement => {
           <li className="link">Wiki</li>
           <footer>
             <ul>
-              <li className="link">About</li>
+              <li className="link" onClick={() => window.ahk.Show("/about", "Center")}>About</li>
               <li>&bull;</li>
               <li className="link">Settings</li>
               <li>&bull;</li>

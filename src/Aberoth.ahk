@@ -27,6 +27,7 @@ class AberothHotkeys
 	__Delete()
 	{
 		This.Config.Save(".\config\options.ini", This.Options)
+		This.Router.__Delete()
 	}
 		
 	__SetupTray()
