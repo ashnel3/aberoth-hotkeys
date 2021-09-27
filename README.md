@@ -16,10 +16,6 @@ Install w/ chocolatey: `choco install git autohotkey nodejs innosetup`
   3. Install dependencies - `yarn install / npm install`
   4. Build & run `yarn start / npm start`
 
-### Road-map:
-  - Load custom scripts
-  - Plugin & theme system
-
 ### Scripts
 ```bash
 example:  yarn build / npm run build
@@ -37,3 +33,18 @@ lint:stylelint  # Lint css
 test            # Run all tests
 ci              # Continuous integration script
 ```
+
+### Road-map:
+**Finished:**
+  - Dynamically bound hotkeys
+  - Auto-hotkey bindings for react-router
+
+**TODO:**
+  - Auto-load custom scripts
+  - Plugin & theme system
+  - Captures & recording w/ ffmpeg?
+  - Always on-top leaderboards & wiki
+  - Rss news feed
+  - Inno-setup installer
+  - Slim install with only executable
+  - Faster build times ):
