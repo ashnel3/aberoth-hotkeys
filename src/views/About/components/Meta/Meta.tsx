@@ -7,11 +7,11 @@ export const Meta = (): ReactElement => {
   const useStyles = createUseStyles((theme: AberothHotkeysTheme) => ({
     '.meta': {
       margin: '0',
-      padding: '0 20px',
+      padding: '0 30px',
       listStyle: 'none',
 
       '& li': {
-        color: theme.palette.body,
+        color: theme.palette.body1,
         fontSize: theme.fontsize(14),
       }
     }
