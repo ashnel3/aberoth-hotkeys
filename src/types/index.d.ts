@@ -1,4 +1,4 @@
-import { Meta } from './config'
+import { Meta, Options } from './config'
 
 declare global {
   export interface Window {
@@ -25,19 +25,17 @@ declare global {
     ahk: {
       /**
        * Get configuration
-       * @param section
        * @param value
        * @returns Option
        */
-      GetOption(section: string, value: string): string
+      GetOption(value: keyof Options): any
 
       /**
        * Update configuration
-       * @param section
        * @param value
        * @param data
        */
-      SetOption(section: string, value: string, data: string): void
+      SetOption(value: keyof Options, data: any): void
 
       /**
        * Get meta-data

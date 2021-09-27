@@ -1,15 +1,15 @@
 ; Functions mapped into the window.ahk object
 
-GetOption(Window, section, value)
+GetOption(Window, value)
 {
 	global App
-	return App.Options[section][value]
+	return App.Options[value]
 }
 
-SetOption(Window, section, value, data)
+SetOption(Window, value, data)
 {
 	global App
-	App.Options[section][value] := data
+	App.Options[value] := data
 }
 
 GetMeta(Window, value)
@@ -39,9 +39,9 @@ Gui(Window, styles)
 Show(Window, route, styles)
 {
 	global App
-	
+
 	Window.Hide()
-	
+
 	if (route != "")
 	{
 		App.Router.SetRoute(Window, route)

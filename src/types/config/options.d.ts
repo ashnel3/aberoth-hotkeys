@@ -1,3 +1,3 @@
 export interface Options {
-  screenshot_directory: string
+  captures_directory: string
 }
